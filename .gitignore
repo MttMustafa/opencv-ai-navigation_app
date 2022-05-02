@@ -2,3 +2,4 @@
 /Sidewalks
 featureMatching.py
 opticalFlow.py
+/__pycache__
