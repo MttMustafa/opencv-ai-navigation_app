@@ -15,7 +15,7 @@ from featureMatchers import feature_matchers
 
 def main():
     
-    target = img_io.read_img('./Python/capstoneProject/Sidewalks/sidewalk/IMG_20220325_173537.jpg')     
+    target = img_io.read_img('Python/capstoneProject/Sidewalks/sidewalk/IMG_20220325_173537.jpg')     
 
     laplacian = img_proc.sobel_op(target)
     
@@ -30,10 +30,10 @@ def main():
     #     x1, y1, x2, y2 = line[0]
     #     cv2.line(mct, (x1, y1), (x2, y2), (255, 0, 0), 3)
     
-    img_io.show_img(mct)
+    # img_io.show_img(mct)
 
 
-    # pattern = img_io.read_img('/media/m2t/STORAGE/YEDEK/Belgeler/WS/Python/capstoneProject/Sidewalks/walkPattern/sw.png', True)
-    # img_io.play_vid(pattern, '/media/m2t/STORAGE/YEDEK/Belgeler/WS/Python/capstoneProject/Sidewalks/VID_20220315_153638.mp4')
+    pattern = img_io.read_img('Python/capstoneProject/Sidewalks/walkPattern/pattern.jpg', True)
+    img_io.play_vid(pattern, 'Python/capstoneProject/Sidewalks/VID_20220315_153638.mp4')
 
 main()

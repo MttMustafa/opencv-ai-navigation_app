@@ -13,6 +13,11 @@ class feature_matchers:
 
     def sift_match(pattern, sidewalk):
 
+        if type(pattern) is not np.ndarray or type(sidewalk) is not np.ndarray:
+            print("Matching failed: Wrong format -> Pattern: {patternType}, Sidewalk: {sidewalkType}".
+                   format(patternType = type(pattern), sidewalkType = type(sidewalk)))
+            sys.exit()
+
         sift = cv2.SIFT_create()
 
         kp1, des1 = sift.detectAndCompute(pattern,None)
@@ -32,6 +37,12 @@ class feature_matchers:
         return sift_matches
 
     def orb_match(pattern, sidewalk):
+
+        if type(pattern) is not np.ndarray or type(sidewalk) is not np.ndarray:
+            print("Matching failed: Wrong format -> Pattern: {patternType}, Sidewalk: {sidewalkType}".
+                  format(patternType = type(pattern), sidewalkType = type(sidewalk)))
+            sys.exit()
+        
         # Initiate ORB detector
         orb = cv2.ORB_create()
 
@@ -55,6 +66,11 @@ class feature_matchers:
 
     def flann_match(pattern, sidewalk):
 
+        if type(pattern) is not np.ndarray or type(sidewalk) is not np.ndarray:
+            print("Matching failed: Wrong format -> Pattern: {patternType}, Sidewalk: {sidewalkType}".
+                  format(patternType = type(pattern), sidewalkType = type(sidewalk)))
+            sys.exit()
+
         sift = cv2.SIFT_create()
 
         # find the keypoints and descriptors with SIFT
@@ -75,7 +91,6 @@ class feature_matchers:
         # ratio test
         for i,(match1,match2) in enumerate(matches):
             if match1.distance < .8*match2.distance:
-                
                 good.append([match1])
 
         # print(len(good))

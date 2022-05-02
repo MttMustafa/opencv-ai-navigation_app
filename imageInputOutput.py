@@ -18,11 +18,11 @@ class img_io:
     
         img = cv2.imread(img, 0)
         if img is None:
-            print("Image not found")
+            print("Image read error: Image not found")
             sys.exit()
         if resize:
-            return img_io.resize_img(img)
-        else: return img
+            img = img_io.resize_img(img)
+        return img
 
     def resize_img(img):
         ratio = 7
@@ -30,6 +30,11 @@ class img_io:
         return img
             
     def show_img(img):
+        
+        if type(img) is not np.ndarray:
+            print("Image cannot be shown: Wrong format -> {dataType}".format(dataType = type(img)))
+            sys.exit()
+
         fig = plt.figure(figsize=(12,10))
         ax = fig.add_subplot(111)
         ax.imshow(img, cmap='gray')
@@ -37,10 +42,15 @@ class img_io:
 
     def play_vid(pattern, vid):
         
-        capture = cv2.VideoCapture(vid)
+        if type(pattern) is not np.ndarray:
+            print("Video cannot be played: Pattern is in wrong format -> {dataType}".format(dataType = type(pattern)))
+            sys.exit()
 
+        capture = cv2.VideoCapture(vid)
+    
         if capture.isOpened() == False:
             print('ERROR: VIDEO FILE NOT FOUND OR WRONG CODEC!')
+            sys.exit()
 
         while capture.isOpened() == True:
 
