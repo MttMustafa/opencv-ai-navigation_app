@@ -1,4 +1,4 @@
-A sidewalk tracker and obstacle detector.
+A sidewalk tracker, object detector and obstacle detector.
 
 Dependencies:
 
@@ -26,7 +26,7 @@ Capabilities
 - Sidewalk detection made using binary semantic segmentation
 - Segmentation Models library used for traning and detecting process
 - Detection model uses Unet architecture with resnet34 backbone which trained with ImageNet
-- Detection of 80 different objects with yolo model
+- Recognition of 80 different objects with yolo model
 
 There is also a module that gives feedbacks with speech using pyttsx3 library
 Current build only contains Turkish phrases (can be found in messageTemplates)
